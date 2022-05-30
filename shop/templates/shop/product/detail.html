@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block title %}
     {{product.name}}
 {% endblock title %}
@@ -21,6 +22,20 @@
             <a href="{{product.category.get_absolute_url}}">{{product.category}}</a>
         </h4>
         <p style="font-weight: bold; font-size:x-large ">$ {{product.price}}</p>
+        <div class="col-lg-6">
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            <div class="row mb-3">
+                <div class="col-lg-6">
+                        {% render_field cart_product_form.quantity class="form-control" %}
+                        {% csrf_token %}
+            
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
+                    </div>
+            </div>
+            </form>
+        </div>
         {{product.description|linebreaks}}
     </div>
 </div>

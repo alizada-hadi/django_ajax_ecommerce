@@ -1,6 +1,27 @@
-<nav class="navbar bg-light">
-    <div class="container">
-      <a class="navbar-brand">My-shop</a>
-      <button class="d-flex btn btn-outline-info">dd</button>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">MyShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto"></ul>
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <a href="{% url 'cart:cart_detail' %}" style="outline: none;" type="button" class="btn btn-default position-relative">
+          <ion-icon name="cart-outline" style="font-size: 1.5rem;"></ion-icon>
+          <span class="position-absolute top-0 start-99 translate-middle badge rounded-pill bg-info">
+            {% with total_items=cart|length %}
+              {% if total_items > 0 %}
+                  {{total_items}}
+              {% else %}
+                0
+              {% endif %}
+            {% endwith %}
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </a>
+      </ul>
+      
     </div>
+  </div>
 </nav>

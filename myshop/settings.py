@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party apps
+    "widget_tweaks", 
+
     # custom apps
     "shop.apps.ShopConfig",
+    "cart.apps.CartConfig"
 ]
 
 MIDDLEWARE = [
@@ -65,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "cart.context_processors.cart"
             ],
         },
     },
@@ -131,6 +136,7 @@ STATICFILES_DIRS = [
 
 
 
+CART_SESSION_ID = "cart"
 
 
 # Default primary key field type
