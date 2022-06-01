@@ -3,6 +3,7 @@ from shop.models import Product
 # Create your models here.
 
 class Order(models.Model):
+
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -13,6 +14,7 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     paid = models.BooleanField(default=False)
+    braintree_id = models.CharField(max_length=150, blank=True)
 
     class Meta:
         ordering = ('-created', )

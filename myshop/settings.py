@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     # custom apps
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig", 
-    "orders.apps.OrdersConfig"
+    "orders.apps.OrdersConfig", 
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,16 @@ CART_SESSION_ID = "cart"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BRAINTREE_MERCHANT_ID = "6mhm9pqwhwbkgbgr"
+BRAINTREE_PUBLIC_KEY = "tmmswrz489qvhtdf"
+BRAINTREE_PRIVATE_KEY = "67dce8e57c7f400916ce5e7cbbcc05a4"
+
+import braintree
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+    )
+
